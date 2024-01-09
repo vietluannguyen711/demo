@@ -2,19 +2,14 @@ package com.example.demo.service;
 
 import com.example.demo.dto.UserDto;
 import com.example.demo.entity.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import java.util.List;
+public interface UserService extends UserDetailsService {
+    User saveUser(UserDto userDto, String roleName);
 
-public interface UserService {
-    User createUser(UserDto userDto);
+    User findByUsername(String username);
 
-    User getUserById(Long userId);
-
-    User getUserByUsername(String username);
-
-    List<UserDto> getAllUsers();
-
-    User updateUser(UserDto userDto);
-
-    void deleteUser(Long userId);
+    UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
 }
