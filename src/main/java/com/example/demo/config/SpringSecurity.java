@@ -28,12 +28,14 @@ public class SpringSecurity {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests((authorize) ->
                         authorize.requestMatchers("/dashboard/**").hasRole("ADMIN")
-                                .requestMatchers("/index").permitAll()
+                                .requestMatchers("/index", "/").permitAll()
+                                .requestMatchers("/student/**").hasRole("SV")
+                                .requestMatchers("/teacher/**").hasRole("GV")
                 ).formLogin(
                         form -> form
                                 .loginPage("/login")
                                 .loginProcessingUrl("/login")
-                                .defaultSuccessUrl("/dashboard/users")
+                                .defaultSuccessUrl("/")
                                 .permitAll()
                 ).logout(
                         logout -> logout
