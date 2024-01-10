@@ -10,9 +10,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
+@RequestMapping("/dashboard")
 public class RegistrationController {
     @Autowired
     private UserService userService;
@@ -24,12 +28,18 @@ public class RegistrationController {
     public String showRegistrationForm(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("roles", roleService.findAll());
-        return "registration";
+        return "dashboard/registration";
     }
 
     @PostMapping("/register")
     public String registerUser(@ModelAttribute("user") UserDto userDto, @RequestParam("role") String roleName) {
         userService.saveUser(userDto, roleName);
         return "redirect:/login";
+    }
+    @GetMapping("/users")
+    public String users(Model model){
+        List<UserDto> users = userService.findAll();
+        model.addAttribute("users", users);
+        return "dashboard/users";
     }
 }

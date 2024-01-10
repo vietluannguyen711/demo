@@ -17,10 +17,5 @@ public class LoginController {
     public String login(){
         return "login";
     }
-    @GetMapping("/users")
-    public String users(Model model){
-        List<UserDto> users = userService.findAll();
-        model.addAttribute("users", users);
-        return "users";
-    }
+
 }

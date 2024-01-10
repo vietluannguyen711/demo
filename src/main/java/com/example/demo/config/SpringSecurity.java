@@ -27,14 +27,13 @@ public class SpringSecurity {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests((authorize) ->
-                        authorize.requestMatchers("/register/**").hasRole("NV")
+                        authorize.requestMatchers("/dashboard/**").hasRole("ADMIN")
                                 .requestMatchers("/index").permitAll()
-                                .requestMatchers("/users").hasRole("NV")
                 ).formLogin(
                         form -> form
                                 .loginPage("/login")
                                 .loginProcessingUrl("/login")
-                                .defaultSuccessUrl("/users")
+                                .defaultSuccessUrl("/dashboard/users")
                                 .permitAll()
                 ).logout(
                         logout -> logout
