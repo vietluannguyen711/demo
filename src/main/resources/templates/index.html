@@ -26,6 +26,7 @@
 </div>
 <div sec:authorize="hasAnyAuthority('ROLE_SV')">
     <a href="/student">Student Page</a>
+    <a th:href="@{/student/update}">Update Profile</a>
 </div>
 <div sec:authorize="hasAnyAuthority('ROLE_GV')">
     <a href="/teacher">Teacher Page</a>

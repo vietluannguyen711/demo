@@ -1,6 +1,5 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.dto.UserDto;
 import com.example.demo.entity.Role;
 import com.example.demo.entity.User;
 import com.example.demo.repository.RoleRepository;
@@ -28,21 +27,22 @@ public class UserServiceImpl implements UserService {
     private BCryptPasswordEncoder passwordEncoder;
 
     @Override
-    public User saveUser(UserDto userDto, String roleName) {
-        User user = new User();
-        user.setUsername(userDto.getUsername());
-        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+    public void saveUser(User user, String roleName) {
+        User userNew = new User();
+        userNew.setUsername(user.getUsername());
+        userNew.setPassword(passwordEncoder.encode(user.getPassword()));
         Role role = roleRepository.findByName(roleName);
         Set<Role> roles = new HashSet<>();
         roles.add(role);
         user.setRoles(roles);
-        return userRepository.save(user);
+        userRepository.save(user);
     }
 
     @Override
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
@@ -54,21 +54,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDto> findAll() {
+    public List<User> findAll() {
         List<User> users = userRepository.findAll();
-        return users.stream()
-                .map((user) -> mapToUserDto(user))
-                .collect(Collectors.toList());
+        return users;
     }
-    private UserDto mapToUserDto(User user){
-        UserDto userDto = new UserDto();
-        userDto.setUsername(user.getUsername());
-        userDto.setPassword(user.getPassword());
-        userDto.setId(user.getId());
-        return userDto;
-    }
-    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection < Role > roles) {
+
+    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }
+
 
 }

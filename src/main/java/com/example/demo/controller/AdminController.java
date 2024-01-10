@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.UserDto;
 import com.example.demo.entity.User;
 import com.example.demo.service.RoleService;
 import com.example.demo.service.UserService;
@@ -38,13 +37,13 @@ public class AdminController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute("user") UserDto userDto, @RequestParam("role") String roleName) {
-        userService.saveUser(userDto, roleName);
+    public String registerUser(@ModelAttribute("user") User user, @RequestParam("role") String roleName) {
+        userService.saveUser(user, roleName);
         return "redirect:/login";
     }
     @GetMapping("/users")
     public String users(Model model){
-        List<UserDto> users = userService.findAll();
+        List<User> users = userService.findAll();
         model.addAttribute("users", users);
         return "dashboard/users";
     }

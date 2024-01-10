@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8"/>
+    <title th:replace="~{fragments/general :: title}">Home</title>
+    <th:block th:insert="~{fragments/general :: link}"></th:block>
+</head>
+<body>
+<div th:insert="~{fragments/general :: nav-fragment}"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+
+            <div th:if="${param.error}">
+                <div class="alert alert-danger">Invalid Username or Password</div>
+            </div>
+            <div th:if="${param.logout}">
+                <div class="alert alert-success"> You have been logged out.</div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Student Form</h2>
+                </div>
+                <form th:action="@{/student/update}" method="post" th:object="${userProfile}">
+                    <div class="form-group">
+                        <label class="form-label">User Id</label>
+                        <input
+                                class="form-control"
+                                id="id"
+                                name="id"
+                                placeholder="Enter Id"
+                                th:field="*{user.id}"
+                                type="text"
+                        />
+                        <p th:errors = "*{user.id}" class="text-danger"
+                           th:if="${#fields.hasErrors('user.id')}"></p>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">First Name</label>
+                        <input
+                                class="form-control"
+                                id="firstName"
+                                name="firstName"
+                                placeholder="Enter first name"
+                                th:field="*{firstName}"
+                                type="text"
+                        />
+                        <p th:errors = "*{firstName}" class="text-danger"
+                           th:if="${#fields.hasErrors('firstName')}"></p>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Last Name</label>
+                        <input
+                                class="form-control"
+                                id="lastName"
+                                name="lastName"
+                                placeholder="Enter last name"
+                                th:field="*{lastName}"
+                                type="text"
+                        />
+                        <p th:errors = "*{lastName}" class="text-danger"
+                           th:if="${#fields.hasErrors('lastName')}"></p>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input
+                                class="form-control"
+                                id="email"
+                                name="email"
+                                placeholder="Enter email"
+                                th:field="*{email}"
+                                type="email"
+                        />
+                        <p th:errors = "*{email}" class="text-danger"
+                           th:if="${#fields.hasErrors('email')}"></p>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Date Of Birth</label>
+                        <input
+                                class="form-control"
+                                id="dateOfBirth"
+                                name="dateOfBirth"
+                                placeholder="Enter date of birth"
+                                th:field="*{dateOfBirth}"
+                                type="date"
+                        />
+                        <p th:errors = "*{dateOfBirth}" class="text-danger"
+                           th:if="${#fields.hasErrors('dateOfBirth')}"></p>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Address 1</label>
+                        <input
+                                class="form-control"
+                                id="address1"
+                                name="address1"
+                                placeholder="Enter address 1"
+                                th:field="*{address1}"
+                                type="text"
+                        />
+                        <p th:errors = "*{address1}" class="text-danger"
+                           th:if="${#fields.hasErrors('address1')}"></p>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Address 2</label>
+                        <input
+                                class="form-control"
+                                id="address2"
+                                name="address2"
+                                placeholder="Enter address 2"
+                                th:field="*{address2}"
+                                type="text"
+                        />
+                        <p th:errors = "*{address2}" class="text-danger"
+                           th:if="${#fields.hasErrors('address2')}"></p>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Street</label>
+                        <input
+                                class="form-control"
+                                id="street"
+                                name="street"
+                                placeholder="Enter street"
+                                th:field="*{street}"
+                                type="text"
+                        />
+                        <p th:errors = "*{street}" class="text-danger"
+                           th:if="${#fields.hasErrors('street')}"></p>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">City</label>
+                        <input
+                                class="form-control"
+                                id="city"
+                                name="city"
+                                placeholder="Enter city"
+                                th:field="*{city}"
+                                type="text"
+                        />
+                        <p th:errors = "*{city}" class="text-danger"
+                           th:if="${#fields.hasErrors('city')}"></p>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">State</label>
+                        <input
+                                class="form-control"
+                                id="state"
+                                name="state"
+                                placeholder="Enter state"
+                                th:field="*{state}"
+                                type="text"
+                        />
+                        <p th:errors = "*{state}" class="text-danger"
+                           th:if="${#fields.hasErrors('state')}"></p>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Country</label>
+                        <input
+                                class="form-control"
+                                id="country"
+                                name="country"
+                                placeholder="Enter country"
+                                th:field="*{country}"
+                                type="text"
+                        />
+                        <p th:errors = "*{country}" class="text-danger"
+                           th:if="${#fields.hasErrors('country')}"></p>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Zip code</label>
+                        <input
+                                class="form-control"
+                                id="zipCode"
+                                name="zipCode"
+                                placeholder="Enter zipCode"
+                                th:field="*{zipCode}"
+                                type="text"
+                        />
+                        <p th:errors = "*{zipCode}" class="text-danger"
+                           th:if="${#fields.hasErrors('zipCode')}"></p>
+
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div th:insert="~{fragments/general :: footer-fragment}"></div>
+</div>
+</body>
+</html>
