@@ -4,21 +4,58 @@
 
 aside {
   margin-top: 5px;
+  .thong-tin{
+    &::before{
+      content: 'Thông tin';
+      display: block;
+      width: 100%;
+      font-weight: bold;
+      background-color: $secondary-color;
+      padding: 10px;
+    }
+  }
+  .sinh-vien{
+    &::before{
+      content: 'Sinh viên';
+      display: block;
+      width: 100%;
+      font-weight: bold;
+      background-color: $secondary-color;
+      padding: 10px;
+    }
+  }
+  .giao-vien{
+    &::before{
+      content: 'Giáo viên';
+      display: block;
+      width: 100%;
+      font-weight: bold;
+      background-color: $secondary-color;
+      padding: 10px;
+    }
+  }
+  .quan-tri{
+    &::before{
+      content: 'Quản trị';
+      display: block;
+      width: 100%;
+      font-weight: bold;
+      background-color: $secondary-color;
+      padding: 10px;
+    }
+  }
 }
 
 aside a {
   background-color: $background;
   color: black;
   display: block;
-  padding: 12px;
   text-decoration: none;
+  padding: 5px;
 }
 
 aside a:hover {
   background-color: #ccc;
 }
 
-aside a.active {
-  background-color: $secondary-color;
-  color: white;
-}
+

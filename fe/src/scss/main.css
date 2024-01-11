@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*! 
  * Primitive UI | MIT License
  *
@@ -1031,21 +1032,52 @@ aside {
   margin-top: 5px;
 }
 
+aside .thong-tin::before {
+  content: 'Thông tin';
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  background-color: #04AA6D;
+  padding: 10px;
+}
+
+aside .sinh-vien::before {
+  content: 'Sinh viên';
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  background-color: #04AA6D;
+  padding: 10px;
+}
+
+aside .giao-vien::before {
+  content: 'Giáo viên';
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  background-color: #04AA6D;
+  padding: 10px;
+}
+
+aside .quan-tri::before {
+  content: 'Quản trị';
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  background-color: #04AA6D;
+  padding: 10px;
+}
+
 aside a {
   background-color: white;
   color: black;
   display: block;
-  padding: 12px;
   text-decoration: none;
+  padding: 5px;
 }
 
 aside a:hover {
   background-color: #ccc;
-}
-
-aside a.active {
-  background-color: #04AA6D;
-  color: white;
 }
 
 footer {

@@ -36,14 +36,27 @@
     <div class="content" layout:fragment="content">
 
         <aside layout:fragment="aside">
+            <div class="thong-tin">
+                <a href="/" class="active">Trang chủ</a>
+                <a href="#">Chương trình đào tạo</a>
+                <a th:href="@{/user-profile/update}">Sửa thông tin cá nhân</a>
+            </div>
+            <div class="sinh-vien" sec:authorize="hasRole('ROLE_SV')">
 
-            <a href="/" class="active">Trang chủ</a>
-            <a href="#">Chương trình đào tạo</a>
-            <a href="#">Đăng ký học</a>
-            <a href="#">Lịch học</a>
-            <a href="#">Lịch thi</a>
-            <a href="#">Xem điểm</a>
-            <a th:href="@{/user-profile/update}">Sửa thông tin cá nhân</a>
+                <a href="#">Đăng ký học</a>
+                <a href="#">Lịch học</a>
+                <a href="#">Lịch thi</a>
+                <a href="#">Xem điểm</a>
+
+            </div>
+            <div class="giao-vien" sec:authorize="hasRole('ROLE_GV')">
+                <a href="#">Tìm phòng trống</a>
+            </div>
+
+            <div class="quan-tri" sec:authorize="hasRole('ROLE_ADMIN')">
+                <a href="#">Đăng ký mới sinh viên</a>
+            </div>
+
         </aside>
 
         <article layout:fragment="article">

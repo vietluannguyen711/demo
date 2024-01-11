@@ -34,12 +34,28 @@
 
         <div class="content">
 
-            <aside>
-                <a href="#" class="active">Home</a>
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-                <a href="#">Link 4</a>
+            <aside layout:fragment="aside">
+                <div class="thong-tin">
+                    <a href="/" class="active">Trang chủ</a>
+                    <a href="#">Chương trình đào tạo</a>
+                    <a th:href="@{/user-profile/update}">Sửa thông tin cá nhân</a>
+                </div>
+                <div class="sinh-vien">
+    
+                    <a href="#">Đăng ký học</a>
+                    <a href="#">Lịch học</a>
+                    <a href="#">Lịch thi</a>
+                    <a href="#">Xem điểm</a>
+    
+                </div>
+                <div class="giao-vien">
+                    
+                </div>
+    
+                <div class="quan-tri">
+                    <a href="#">Đăng ký mới sinh viên</a>
+                </div>
+    
             </aside>
 
             <article>
