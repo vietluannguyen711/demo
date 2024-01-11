@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.UserDto;
 import com.example.demo.entity.User;
 import com.example.demo.service.RoleService;
 import com.example.demo.service.UserService;
@@ -31,7 +32,7 @@ public class AdminController {
     }
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("userDto", new UserDto());
         model.addAttribute("roles", roleService.findAll());
         return "dashboard/registration";
     }

@@ -23,11 +23,6 @@ public class UserProfileController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("")
-    public String home(){
-        return "student";
-    }
-
     @GetMapping("/update")
     public String updateProfile(Model model, @AuthenticationPrincipal UserDetails currentUser) {
 
