@@ -11,13 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/student")
-public class StudentController {
+@RequestMapping("/user-profile")
+public class UserProfileController {
     @Autowired
     private UserProfileService userProfileService;
 
@@ -34,8 +33,12 @@ public class StudentController {
 
         User user = userService.findByUsername(currentUser.getUsername());
         UserProfile userProfile = user.getUserProfile();
+        if (userProfile == null){
+            userProfile = new UserProfile();
+            userProfile.setUser(user);
+        }
         model.addAttribute("userProfile", userProfile);
-        return "student-form";
+        return "user-profile-form";
     }
 
 

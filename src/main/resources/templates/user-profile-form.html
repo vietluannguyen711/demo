@@ -6,13 +6,13 @@
 >
 <head>
     <title>
-        Update student profile
+        Update profile
     </title>
 </head>
 
 <article layout:fragment="article">
     <section>
-        <form th:action="@{/student/update}" method="post" th:object="${userProfile}">
+        <form th:action="@{/user-profile/update}" method="post" th:object="${userProfile}">
             <div>
                 <label for="uname"><b>User Id</b></label>
                 <input type="text" placeholder="Enter User Id" th:field="*{user.id}" required>
@@ -21,7 +21,7 @@
 
 
                 <label for="id"><b>Id</b></label>
-                <input type="text" placeholder="Enter User Id" th:field="*{id}" required>
+                <input type="text" placeholder="Enter User Id" th:field="*{id}">
                 <p th:errors="*{id}" class="text-danger"
                    th:if="${#fields.hasErrors('id')}"></p>
 
