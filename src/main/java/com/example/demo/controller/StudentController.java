@@ -23,27 +23,6 @@ public class StudentController {
 
     @Autowired
     private UserService userService;
-
-    @GetMapping("")
-    public String home(){
-        return "student";
-    }
-
-    @GetMapping("/update")
-    public String updateProfile(Model model, @AuthenticationPrincipal UserDetails currentUser) {
-
-        User user = userService.findByUsername(currentUser.getUsername());
-        UserProfile userProfile = user.getUserProfile();
-        model.addAttribute("userProfile", userProfile);
-        return "student-form";
-    }
-
-
-    @PostMapping("/update")
-    public String updateProfile(@ModelAttribute("userProfile") UserProfile userProfile) {
-
-        UserProfile userProfileSave = userProfileService.saveUserProfile(userProfile);
-        return "redirect:/login";
-    }
+    
 
 }
