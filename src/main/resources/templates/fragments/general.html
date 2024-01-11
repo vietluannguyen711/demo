@@ -27,13 +27,17 @@
                 <input type="submit" value="Logout"/>
             </form>
         </div>
+        <div sec:authorize="isAnonymous()">
+            <a th:href="@{/login}">Login</a>
+        </div>
 
     </nav>
 
     <div class="content" layout:fragment="content">
 
         <aside layout:fragment="aside">
-            <a href="#" class="active">Trang chủ</a>
+
+            <a href="/" class="active">Trang chủ</a>
             <a href="#">Chương trình đào tạo</a>
             <a href="#">Đăng ký học</a>
             <a href="#">Lịch học</a>

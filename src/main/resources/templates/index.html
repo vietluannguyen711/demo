@@ -11,17 +11,8 @@
     </title>
 </head>
 <body>
-<div layout:fragment="article">
-
-    <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-        <a href="/dashboard/admin">Admin Page</a>
-    </div>
-    <div sec:authorize="hasAnyAuthority('ROLE_SV')">
-        <a th:href="@{/student/update}">Update Profile</a>
-    </div>
-    <div sec:authorize="hasAnyAuthority('ROLE_GV')">
-        <a th:href="@{/teacher/update}">Update Profile</a>
-    </div>
-</div>
+<article layout:fragment="article">
+    <p>Thông tin</p>
+</article>
 </body>
 </html>
