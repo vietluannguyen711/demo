@@ -10,7 +10,7 @@
     </title>
 </head>
 
-<div layout:fragment="article">
+<article layout:fragment="article">
     <section>
         <form th:action="@{/student/update}" method="post" th:object="${userProfile}">
             <div>
@@ -85,6 +85,6 @@
             </div>
         </form>
     </section>
-</div>
+</article>
 </body>
 </html>
