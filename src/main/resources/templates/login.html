@@ -1,39 +1,35 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/fragments/general}"
 >
 <head>
-    <meta charset="UTF-8"/>
-    <title th:replace="~{fragments/general :: title}">Login</title>
-    <th:block th:insert="~{fragments/general :: link}"></th:block>
+    <title>Login</title>
 </head>
 <body>
+<div layout:fragment="article">
+    <article>
+        <section>
+            <form th:action="@{/login}" method="post">
+                <div th:if="${param.error}">
+                    <div class="alert alert-danger">Invalid Username or Password</div>
+                </div>
+                <div th:if="${param.logout}">
+                    <div class="alert alert-success"> You have been logged out.</div>
+                </div>
+                <div>
+                    <label for="uname"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="username" required>
 
-<div class="container">
-    <div th:insert="~{fragments/general :: header}"></div>
-    <div th:insert="~{fragments/general :: nav}"></div>
-    <div class="content">
-        <div th:replace="~{fragments/general :: aside}"></div>
-        <article>
-            <section>
-                <form action="action_page.php" method="post">
-                    <div>
-                        <label for="uname"><b>Username</b></label>
-                        <input type="text" placeholder="Enter Username" name="uname" required>
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="password" required>
 
-                        <label for="psw"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="psw" required>
-
-                        <button type="submit">Login</button>
-                        <label>
-                            <input type="checkbox" checked="checked" name="remember"> Remember me
-                        </label>
-                    </div>
-                </form>
-            </section>
-        </article>
-    </div>
-    <div th:insert="~{fragments/general :: footer}"></div>
+                    <button type="submit">Login</button>
+                </div>
+            </form>
+        </section>
+    </article>
 </div>
 </body>
 </html>
