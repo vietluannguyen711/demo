@@ -10,6 +10,8 @@ import java.util.List;
 public interface UserService extends UserDetailsService {
     void saveUser(User user, String roleName);
 
+    void resetPassword(User user, String password);
+
     User findByUsername(String username);
 
     UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;

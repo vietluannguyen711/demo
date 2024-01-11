@@ -32,7 +32,7 @@ public class SpringSecurity {
                                 .requestMatchers("/index", "/", "/error/**").permitAll()
                                 .requestMatchers("/student/**").hasRole("SV")
                                 .requestMatchers("/teacher/**").hasRole("GV")
-                                .requestMatchers("/user-profile/**").hasAnyRole("GV", "SV", "ADMIN")
+                                .requestMatchers("/user-profile/**", "/user/**").hasAnyRole("GV", "SV", "ADMIN")
                                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
 
                 ).formLogin(
