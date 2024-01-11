@@ -12,14 +12,6 @@
 </head>
 <body>
 <div layout:fragment="article">
-    <div sec:authorize="isAuthenticated()">
-        Welcome <b><span sec:authentication="name">Username</span></b>
-        &nbsp;
-        <i><span sec:authentication="principal.authorities">Roles</span></i>
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Logout"/>
-        </form>
-    </div>
 
     <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
         <a href="/dashboard/admin">Admin Page</a>
