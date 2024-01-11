@@ -2,6 +2,7 @@ package com.example.demo.config;
 
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -31,6 +32,8 @@ public class SpringSecurity {
                                 .requestMatchers("/index", "/").permitAll()
                                 .requestMatchers("/student/**").hasRole("SV")
                                 .requestMatchers("/teacher/**").hasRole("GV")
+                                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+
                 ).formLogin(
                         form -> form
                                 .loginPage("/login")
@@ -51,4 +54,5 @@ public class SpringSecurity {
                 .userDetailsService(userService)
                 .passwordEncoder(bCryptPasswordEncoder());
     }
+
 }
