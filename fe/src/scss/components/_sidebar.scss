@@ -1,0 +1,24 @@
+/**
+ * Header
+ */
+
+aside {
+  margin-top: 5px;
+}
+
+aside a {
+  background-color: $background;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+
+aside a:hover {
+  background-color: #ccc;
+}
+
+aside a.active {
+  background-color: $secondary-color;
+  color: white;
+}

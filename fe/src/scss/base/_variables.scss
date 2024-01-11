@@ -27,7 +27,7 @@ $desktop: $medium !default;
 
 $background: white !default;
 $primary-color: #0366ee !default;
-$secondary-color: #29de7d !default;
+$secondary-color: #04AA6D !default;
 $accent-color: #cdcdcd !default;
 $alternate-background: #fafafa !default;
 $alternate-color: #404040 !default;
@@ -53,7 +53,7 @@ $font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Aria
 $line-height: 1.6 !default;
 
 // Headings
-$heading-font-color: #404040 !default;
+$heading-font-color: #FFFFFF !default;
 $heading-font-weight: 600 !default;
 $heading-font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Arial,
   sans-serif !default;
@@ -94,7 +94,7 @@ $borders: $border-width $border-style $border-color !default;
 // Buttons
 //==============================================================================
 
-$button-background: $primary-color !default;
+$button-background: $secondary-color !default;
 $button-background-hover: darken($button-background, 10%) !default;
 $button-color: #ffffff !default;
 $button-font-weight: 600 !default;
