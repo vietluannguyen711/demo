@@ -30,7 +30,7 @@ public class UserProfileController {
         UserProfile userProfile = user.getUserProfile();
         if (userProfile == null){
             userProfile = new UserProfile();
-            userProfile.setUser(user);
+
         }
         model.addAttribute("userProfile", userProfile);
         return "user-profile-form";

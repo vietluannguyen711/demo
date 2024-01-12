@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.RoleDto;
 import com.example.demo.entity.Role;
 
 import java.util.List;
@@ -10,5 +9,7 @@ public interface RoleService {
 
     Role findByName(String name);
 
-    List<RoleDto> findAll();
+    List<Role> findAll();
+
+    Role findById(Long id);
 }

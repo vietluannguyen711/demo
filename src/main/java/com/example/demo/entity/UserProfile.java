@@ -79,7 +79,4 @@ public class UserProfile {
     @Size(max = 32)
     private String zipCode;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
 }

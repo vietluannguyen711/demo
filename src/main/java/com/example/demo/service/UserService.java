@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import java.util.List;
 
 public interface UserService extends UserDetailsService {
-    void saveUser(User user, String roleName);
+    void saveUser(User user);
 
     void resetPassword(User user, String password);
 
@@ -17,5 +17,6 @@ public interface UserService extends UserDetailsService {
     UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
 
     List<User> findAll();
+
 
 }
