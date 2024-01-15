@@ -35,8 +35,7 @@ public class AdminController {
     private UserService userService;
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private RoleRepository roleRepository;
+
     @Autowired
     private RoleService roleService;
 
@@ -82,7 +81,7 @@ public class AdminController {
 
     @GetMapping("/users")
     public String users(Model model) {
-        List<User> users = userService.findAll();
+        List<User> users = userRepository.findAll();
         model.addAttribute("users", users);
         return "dashboard/users";
     }
@@ -93,7 +92,7 @@ public class AdminController {
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
 
         userRepository.delete(user);
-//        userRepository.deleteById(id);
+
         redirectAttributes.addFlashAttribute("message", "User deleted successfully!");
         return "redirect:/dashboard/users";
     }

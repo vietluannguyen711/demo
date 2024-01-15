@@ -12,11 +12,6 @@ public interface UserService extends UserDetailsService {
 
     void resetPassword(User user, String password);
 
-    User findByUsername(String username);
-
     UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
-
-    List<User> findAll();
-
 
 }
