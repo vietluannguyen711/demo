@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.User;
 import com.example.demo.entity.UserProfile;
+import com.example.demo.repository.UserProfileRepository;
 import com.example.demo.service.UserProfileService;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +24,19 @@ public class UserProfileController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private UserProfileRepository userProfileRepository;
+
     @GetMapping("/update")
     public String updateProfile(Model model, @AuthenticationPrincipal UserDetails currentUser) {
 
         User user = userService.findByUsername(currentUser.getUsername());
-        UserProfile userProfile = new UserProfile();
-        userProfile.setUser(user);
+        UserProfile userProfile = userProfileRepository.findByUser(user);
+        if (userProfile == null){
+            userProfile = new UserProfile();
+            userProfile.setUser(user);
+        }
+
         model.addAttribute("userProfile", userProfile);
         return "user-profile-form";
     }

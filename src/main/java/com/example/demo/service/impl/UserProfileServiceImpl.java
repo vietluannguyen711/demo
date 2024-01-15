@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.entity.User;
 import com.example.demo.entity.UserProfile;
 import com.example.demo.repository.UserProfileRepository;
 import com.example.demo.service.UserProfileService;
@@ -16,4 +17,11 @@ public class UserProfileServiceImpl implements UserProfileService {
     public UserProfile saveUserProfile(UserProfile userProfile) {
         return userProfileRepository.save(userProfile);
     }
+
+    @Override
+    public UserProfile findByUser(User user) {
+        return userProfileRepository.findByUser(user);
+    }
+
+
 }
