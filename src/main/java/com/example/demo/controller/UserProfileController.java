@@ -27,11 +27,8 @@ public class UserProfileController {
     public String updateProfile(Model model, @AuthenticationPrincipal UserDetails currentUser) {
 
         User user = userService.findByUsername(currentUser.getUsername());
-        UserProfile userProfile = user.getUserProfile();
-        if (userProfile == null){
-            userProfile = new UserProfile();
-
-        }
+        UserProfile userProfile = new UserProfile();
+        userProfile.setUser(user);
         model.addAttribute("userProfile", userProfile);
         return "user-profile-form";
     }

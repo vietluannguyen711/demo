@@ -79,4 +79,8 @@ public class UserProfile {
     @Size(max = 32)
     private String zipCode;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
 }
