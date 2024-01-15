@@ -4,7 +4,9 @@ import com.example.demo.converter.UserConverter;
 import com.example.demo.dto.UserDto;
 import com.example.demo.entity.Role;
 import com.example.demo.entity.User;
+import com.example.demo.entity.UserProfile;
 import com.example.demo.repository.RoleRepository;
+import com.example.demo.repository.UserProfileRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.RoleService;
 import com.example.demo.service.UserService;
@@ -35,6 +37,9 @@ public class AdminController {
     private UserService userService;
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private UserProfileRepository userProfileRepository;
 
     @Autowired
     private RoleService roleService;
@@ -95,6 +100,21 @@ public class AdminController {
 
         redirectAttributes.addFlashAttribute("message", "User deleted successfully!");
         return "redirect:/dashboard/users";
+    }
+
+    @GetMapping("/user/update/{id}")
+    public String updateUser(@PathVariable("id") long id, Model model) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+
+        UserProfile userProfile = userProfileRepository.findByUser(user);
+        if (userProfile == null){
+            userProfile = new UserProfile();
+            userProfile.setUser(user);
+        }
+        model.addAttribute("userProfile", userProfile);
+        return "user-profile-form";
+
     }
 
 }
