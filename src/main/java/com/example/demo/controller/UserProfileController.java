@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/user-profile")
@@ -43,9 +44,10 @@ public class UserProfileController {
 
 
     @PostMapping("/update")
-    public String updateProfile(@ModelAttribute("userProfile") UserProfile userProfile) {
+    public String updateProfile(@ModelAttribute("userProfile") UserProfile userProfile, RedirectAttributes redirectAttributes) {
 
-        UserProfile userProfileSave = userProfileService.saveUserProfile(userProfile);
+        userProfileService.saveUserProfile(userProfile);
+        redirectAttributes.addFlashAttribute("message", "User updated successfully!");
         return "redirect:/login";
     }
 

@@ -92,8 +92,8 @@ public class AdminController {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
 
-//        userRepository.delete(user);
-        userRepository.deleteById(id);
+        userRepository.delete(user);
+//        userRepository.deleteById(id);
         redirectAttributes.addFlashAttribute("message", "User deleted successfully!");
         return "redirect:/dashboard/users";
     }
